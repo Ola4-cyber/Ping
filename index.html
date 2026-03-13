@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="Ping - Connect with family on Fomilo">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Ping">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Ping - Connect with Family</title>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Auth Screen -->
+        <div id="authScreen" class="auth-screen" role="main">
+            <div class="auth-container">
+                <div class="logo" aria-label="Ping App">Ping</div>
+                <p class="tagline">Connect with family on Fomilo</p>
+                
+                <form id="loginForm" novalidate>
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" aria-required="true">
+                        <span class="error-message" id="emailError">Please enter a valid email</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required minlength="6" autocomplete="current-password" aria-required="true">
+                        <span class="error-message" id="passwordError">Password must be at least 6 characters</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        <span>Sign In</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="createAccountBtn">Create Account</button>
+                </form>
+                
+                <div class="auth-links">
+                    <a href="#" id="forgotPassword">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main App -->
+        <div id="mainApp" class="main-app" role="main" aria-label="Main application">
+            <!-- Header -->
+            <header class="header" role="banner">                <h1>Ping</h1>
+                <div class="header-icons">
+                    <button class="icon-btn" onclick="App.showView('messages')" aria-label="Messages" title="Messages">
+                        💬
+                        <span class="badge" id="messageBadge">3</span>
+                    </button>
+                    <button class="icon-btn" aria-label="Notifications" title="Notifications">
+                        🔔
+                    </button>
+                </div>
+            </header>
+
+            <!-- Home View -->
+            <div id="homeView" class="view active" role="region" aria-label="Home feed">
+                <!-- Stories -->
+                <div class="stories-container" role="region" aria-label="Stories">
+                    <div class="story" tabindex="0" role="button" aria-label="Add your story">
+                        <div class="story-avatar add-story">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="Your profile">
+                        </div>
+                        <span class="story-name">Your Story</span>
+                    </div>
+                    <div class="story" tabindex="0" role="button" aria-label="View Sarah's story">
+                        <div class="story-avatar">
+                            <img src="https://i.pravatar.cc/150?img=2" alt="Sarah's profile">
+                        </div>
+                        <span class="story-name">Sarah</span>
+                    </div>
+                    <div class="story" tabindex="0" role="button" aria-label="View Mike's story">
+                        <div class="story-avatar">
+                            <img src="https://i.pravatar.cc/150?img=3" alt="Mike's profile">
+                        </div>
+                        <span class="story-name">Mike</span>
+                    </div>
+                    <div class="story" tabindex="0" role="button" aria-label="View Emma's story">
+                        <div class="story-avatar">
+                            <img src="https://i.pravatar.cc/150?img=4" alt="Emma's profile">
+                        </div>
+                        <span class="story-name">Emma</span>
+                    </div>
+                    <div class="story" tabindex="0" role="button" aria-label="View John's story">
+                        <div class="story-avatar">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="John's profile">
+                        </div>
+                        <span class="story-name">John</span>
+                    </div>
+                </div>
+
+                <!-- Feed -->
+                <div class="feed" role="feed" aria-label="Posts feed">                    <article class="post" aria-label="Post by Alex Chen">
+                        <div class="post-header">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Alex Chen" class="post-avatar" loading="lazy">
+                            <div class="post-info">
+                                <div class="post-author">Alex Chen</div>
+                                <div class="post-time" aria-label="Posted 2 hours ago">2h ago</div>
+                            </div>
+                            <button class="post-menu" aria-label="More options" aria-expanded="false">⋯</button>
+                        </div>
+                        <div class="post-content">
+                            <p class="post-text">Just launched our new design system — check it out! 🚀</p>
+                        </div>
+                        <div class="post-actions" role="group" aria-label="Post actions">
+                            <button class="action-btn" onclick="App.toggleLike(this)" aria-pressed="false" aria-label="Like post">
+                                <span aria-hidden="true">❤️</span>
+                                <span class="like-count">234</span>
+                            </button>
+                            <button class="action-btn" aria-label="Comment on post">
+                                <span aria-hidden="true">💬</span>
+                                <span>45</span>
+                            </button>
+                            <button class="action-btn" aria-label="Share post">
+                                <span aria-hidden="true">↗️</span>
+                                <span>Share</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post" aria-label="Post by Sarah Miller">
+                        <div class="post-header">
+                            <img src="https://i.pravatar.cc/150?img=12" alt="Sarah Miller" class="post-avatar" loading="lazy">
+                            <div class="post-info">
+                                <div class="post-author">Sarah Miller</div>
+                                <div class="post-time" aria-label="Posted 5 hours ago">5h ago</div>
+                            </div>
+                            <button class="post-menu" aria-label="More options" aria-expanded="false">⋯</button>
+                        </div>
+                        <div class="post-content">
+                            <p class="post-text">Beautiful sunset from today's hike! 🌄</p>
+                            <img src="https://picsum.photos/seed/sunset/600/400" alt="Sunset photo from hike" class="post-image" loading="lazy">
+                        </div>
+                        <div class="post-actions" role="group" aria-label="Post actions">
+                            <button class="action-btn" onclick="App.toggleLike(this)" aria-pressed="false" aria-label="Like post">
+                                <span aria-hidden="true">❤️</span>
+                                <span class="like-count">892</span>
+                            </button>
+                            <button class="action-btn" aria-label="Comment on post">
+                                <span aria-hidden="true">💬</span>
+                                <span>123</span>
+                            </button>                            <button class="action-btn" aria-label="Share post">
+                                <span aria-hidden="true">↗️</span>
+                                <span>Share</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post" aria-label="Post by Mike Johnson">
+                        <div class="post-header">
+                            <img src="https://i.pravatar.cc/150?img=13" alt="Mike Johnson" class="post-avatar" loading="lazy">
+                            <div class="post-info">
+                                <div class="post-author">Mike Johnson</div>
+                                <div class="post-time" aria-label="Posted 1 day ago">1d ago</div>
+                            </div>
+                            <button class="post-menu" aria-label="More options" aria-expanded="false">⋯</button>
+                        </div>
+                        <div class="post-content">
+                            <p class="post-text">Family dinner was amazing! Thanks everyone for coming 🍽️</p>
+                            <img src="https://picsum.photos/seed/dinner/600/400" alt="Family dinner photo" class="post-image" loading="lazy">
+                        </div>
+                        <div class="post-actions" role="group" aria-label="Post actions">
+                            <button class="action-btn" onclick="App.toggleLike(this)" aria-pressed="false" aria-label="Like post">
+                                <span aria-hidden="true">❤️</span>
+                                <span class="like-count">567</span>
+                            </button>
+                            <button class="action-btn" aria-label="Comment on post">
+                                <span aria-hidden="true">💬</span>
+                                <span>89</span>
+                            </button>
+                            <button class="action-btn" aria-label="Share post">
+                                <span aria-hidden="true">↗️</span>
+                                <span>Share</span>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Profile View -->
+            <div id="profileView" class="view" role="region" aria-label="Profile">
+                <div class="profile-header">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="John Doe's profile" class="profile-avatar" loading="lazy">
+                    <h2 class="profile-name">John Doe</h2>
+                    <div class="profile-handle">@johndoe</div>
+                    <p class="profile-bio">Passionate about clean interfaces & inclusive UX<br>Design Lead at Studio Nova</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value">142</div>
+                            <div class="stat-label">Posts</div>
+                        </div>                        <div class="stat">
+                            <div class="stat-value">2.4k</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">892</div>
+                            <div class="stat-label">Following</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-grid" role="grid" aria-label="User posts">
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/1/300/300" alt="Post 1" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/2/300/300" alt="Post 2" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/3/300/300" alt="Post 3" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/4/300/300" alt="Post 4" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/5/300/300" alt="Post 5" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/6/300/300" alt="Post 6" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/7/300/300" alt="Post 7" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/8/300/300" alt="Post 8" loading="lazy"></div>
+                    <div class="grid-item" role="gridcell"><img src="https://picsum.photos/seed/9/300/300" alt="Post 9" loading="lazy"></div>
+                </div>
+            </div>
+
+            <!-- Messages View -->
+            <div id="messagesView" class="view" role="region" aria-label="Messages">
+                <div class="header">
+                    <h1>Messages</h1>
+                </div>
+                <div class="messages-list" role="list" aria-label="Message conversations">
+                    <div class="message-item unread" role="listitem" tabindex="0" aria-label="Message from Jamie Lopez, 5 minutes ago">
+                        <img src="https://i.pravatar.cc/150?img=20" alt="Jamie Lopez" class="message-avatar" loading="lazy">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Jamie Lopez</span>
+                                <span class="message-time">5m</span>
+                            </div>
+                            <div class="message-preview">
+                                <span>Hey, did you see the new Figma file?</span>
+                                <span class="unread-dot" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-item" role="listitem" tabindex="0" aria-label="Message from Alex Chen, 1 hour ago">
+                        <img src="https://i.pravatar.cc/150?img=21" alt="Alex Chen" class="message-avatar" loading="lazy">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Alex Chen</span>
+                                <span class="message-time">1h</span>
+                            </div>
+                            <div class="message-preview">                                <span>Thanks for the feedback!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-item" role="listitem" tabindex="0" aria-label="Message from Sarah Miller, 3 hours ago">
+                        <img src="https://i.pravatar.cc/150?img=22" alt="Sarah Miller" class="message-avatar" loading="lazy">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Sarah Miller</span>
+                                <span class="message-time">3h</span>
+                            </div>
+                            <div class="message-preview">
+                                <span>Let's catch up this weekend</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-item" role="listitem" tabindex="0" aria-label="Message from Mike Johnson, 1 day ago">
+                        <img src="https://i.pravatar.cc/150?img=23" alt="Mike Johnson" class="message-avatar" loading="lazy">
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Mike Johnson</span>
+                                <span class="message-time">1d</span>
+                            </div>
+                            <div class="message-preview">
+                                <span>Great work on the presentation!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Post Modal -->
+        <div id="createPostModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Create Post</h2>
+                    <button class="close-btn" onclick="App.closeModal()" aria-label="Close modal">✕</button>
+                </div>
+                <div class="upload-area" id="uploadArea" tabindex="0" role="button" aria-label="Upload photo">
+                    <div class="upload-icon" aria-hidden="true">📷</div>
+                    <p>Tap to upload photo</p>
+                    <img id="imagePreview" class="image-preview" alt="Selected image preview">
+                </div>
+                <input type="file" id="fileInput" accept="image/*" style="display: none" onchange="App.handleFileSelect(event)" aria-hidden="true">
+                <textarea class="caption-input" id="captionInput" rows="4" placeholder="Write a caption..." maxlength="500" aria-label="Post caption"></textarea>
+                <button class="btn btn-primary" onclick="App.createPost()" id="shareBtn">Share</button>
+            </div>
+        </div>
+        <!-- Bottom Navigation -->
+        <nav id="bottomNav" class="bottom-nav" role="navigation" aria-label="Main navigation" style="display: none;">
+            <button class="nav-item active" onclick="App.showView('home')" aria-label="Home" aria-current="page">
+                <span aria-hidden="true">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item" aria-label="Search">
+                <span aria-hidden="true">🔍</span>
+                <span class="nav-label">Search</span>
+            </button>
+            <button class="nav-item create" onclick="App.openModal()" aria-label="Create new post">
+                <span aria-hidden="true">➕</span>
+            </button>
+            <button class="nav-item" onclick="App.showView('messages')" aria-label="Messages">
+                <span aria-hidden="true">💬</span>
+                <span class="nav-label">Messages</span>
+            </button>
+            <button class="nav-item" onclick="App.showView('profile')" aria-label="Profile">
+                <span aria-hidden="true">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+        </nav>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+                                                                                                          </html>
