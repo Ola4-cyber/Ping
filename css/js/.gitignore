@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build/output
+dist/
+build/
+*.min.css
+*.min.js
+
+# Logs
+*.log
+npm-debug.log*
+
+# PWA/cache (don't commit user data)
+.cache/
+.pwa/
+
+# Screenshots (keep local)
+assets/screenshots/*.png
+!assets/screenshots/.gitkeep
+
+# Temporary
+tmp/
+temp/
+*.tmp
+*.temp
+
+# IDE specific
+*.sublime-project
+*.sublime-workspace
